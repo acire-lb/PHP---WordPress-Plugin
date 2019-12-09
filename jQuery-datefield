@@ -1,0 +1,17 @@
+//On Change in the First Date Field
+$(document).on('change', '#input_41_15', function(){
+  
+  //Trying to get the Date Selected in the First Date Field.
+  var DateSelected = new Date($("#input_41_15").val());
+  
+  console.log("The text has been changed to: ", $("#input_41_15").val());
+ 
+  //Add +1 for the next annual year
+  var NextDay = new Date (DateSelected.getFullYear() + 1, DateSelected.getDate(), DateSelected.getMonth());
+ 
+  //Intilise Options for Datepicker and Set the Next Date
+  $("#input_41_63").datepicker("option", "currentMonth", new Date(NextDay - 1)).datepicker("setDate", NextDay);
+  
+  //Display next Date in the Console
+  console.log('The Next Monthly Check is: ', $("#input_41_63").val());
+});
