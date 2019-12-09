@@ -118,27 +118,27 @@ class Keetrax_ServiceTaxonomy
           //Labels used for Grouping the Custom Post Type
            $lables = array
 		   (
-		      'name'				    => _x('Services','services-plugin'),//Adds Context to the name of the Custom Post Type
-              'singular_name'           => _x('Service', 'Type', 'services-plugin'),
-              'all_items'               => __('All Service', 'services-plugin'),
-              'search_items'            => __('Search Service', 'services-plugin'),
-              'parent_item'             => __('Parent Service', 'services-plugin'),
-              'parent_item_colon'       => __('Parent Service:', 'services-plugin'),
-			  'edit item'               => __('Edit Service', 'services-plugin'),
-			  'update_item'             => __('Update Service', 'services-plugin'),
-			  'add_new_item'            => __('Add New Service', 'services-plugin'),
-			  'new_item_name'           => __('New Service', 'services-plugin'),
-			  'menu_name'               => __('Service', 'services-plugin'),
-			  'popular_items'           => __('Services', 'services-plugin'),
-			  'back_to_items'           => __('Back to Services', 'services-plugin'),
-			  'add_or_remove_items'     => __('Add or remove Services', 'service-plugin'),
-            );
+		      'name'		        => _x('Services','services-plugin'),//Adds Context to the name of the Custom Post Type
+              	      'singular_name'           => _x('Service', 'Type', 'services-plugin'),
+              	      'all_items'               => __('All Service', 'services-plugin'),
+                      'search_items'            => __('Search Service', 'services-plugin'),
+                      'parent_item'             => __('Parent Service', 'services-plugin'),
+                      'parent_item_colon'       => __('Parent Service:', 'services-plugin'),
+		      'edit item'               => __('Edit Service', 'services-plugin'),
+		      'update_item'             => __('Update Service', 'services-plugin'),
+		      'add_new_item'            => __('Add New Service', 'services-plugin'),
+		      'new_item_name'           => __('New Service', 'services-plugin'),
+		      'menu_name'               => __('Service', 'services-plugin'),
+		      'popular_items'           => __('Services', 'services-plugin'),
+		      'back_to_items'           => __('Back to Services', 'services-plugin'),
+		      'add_or_remove_items'     => __('Add or remove Services', 'service-plugin'),
+                   );
 
             //Arguments used with the Labels to Group the Custom Post Type
             $args = array
 			(
-               'public'                 => true,
-               'hierarchical'           => false,
+               		   'public'                 => true,
+               		   'hierarchical'           => false,
 			   'labels'                 => $labels,
 			   'show_ui'                => true,
 			   'show_admin_column'      => true,                        
@@ -150,7 +150,7 @@ class Keetrax_ServiceTaxonomy
 			   'rewrite'                => array('slug', 'with_font', 'hierarchical'),
 			   'capabilities'           => array('manage_terms', 'edit_terms', 'delete_terms', 'assign_terms'),
 			   'sort'                   => true,
-                );
+                        );
 
             //Adds the Taxonomy, passes in the array's arguments.
             register_taxonomy('service', $args); 
@@ -194,13 +194,13 @@ class Keetrax_ShortcodeServices
 				<div class="content">
                  
 					<?php 
-						echo $content; 
+					   echo $content; 
 					?>    
 				</div>
 
             <?php 
         
-				endwhile;   
+	    endwhile;   
             endif;     
                
             wp_reset_postdata();//Needs to reset, as this loops each time the shortcode is called.
