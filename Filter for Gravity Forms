@@ -1,0 +1,61 @@
+<?php
+
+	class ServiceForm_Entries
+	{
+		//Gets the Entry ID information
+		 function get_entry_details()
+		 {
+			  //checks if the entry_id is set.   
+        if(isset($_GET['entry_id']))
+        {
+          $id = $_GET['entry_id'];
+          $entry = GFAPI::get_entry($id);
+        }  
+			  return $entry;	
+		 }
+			
+					
+		//Updates the Service options parameter from the Previous entry
+		add_filter( 'gform_field_value_client_email', 'set_email_field_value', 10, 3 );
+         
+        function set_email_field_value($entry)
+        {
+			      $entries = $this->set_email_field_value($entry);
+			
+			      //retreive entry based on id
+			      $email = $entries[4];
+			
+            return $email;  //Returns the Entry for the Client email Information
+         }
+
+
+
+		//Updates the client name parameter from the Previous entry
+		add_filter( 'gform_field_value_client_name', 'set_name_field_value', 10, 4 );
+         
+		   function set_name_field_value($entry)
+        {
+            $entries = $this->set_email_field_value($entry);
+			
+			      //retreive entry based on id
+			      $name = $entries[2];
+			
+            return $name;//Returns the Client Name Information from the Entry
+		     }
+		
+		
+		//Updates the Service options parameter from the Previous entry
+		add_filter( 'gform_field_value_service_options', 'set_service_field_value', 10, 3 );
+         
+        function set_service_field_value($entry)
+        {
+		        $entries = $this->set_email_field_value($entry);
+
+			      //retreive all the entries
+            return $entries;
+		    }
+	
+	}
+	//$form = new Form();
+
+?>
