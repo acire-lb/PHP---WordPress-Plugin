@@ -17,32 +17,31 @@ add_action('init', 'get_entry_details');
    		
     function set_readonly_settings()
 	{
-         //Updates the Fields in the 9th Form as read only
+         	//Updates the Fields in the 9th Form as read only
 		add_filter( 'gform_field_content_9', 'set_readonly_field', 10, 2);
 
- 		function set_readonly_field( $field_content, $field ) {
-   
-			return str_replace( 'type=', "readonly='readonly' type=", $field_content );
-
+ 		function set_readonly_field( $field_content, $field ) 
+		{
+   			return str_replace( 'type=', "readonly='readonly' type=", $field_content );
 		}
-    }
+    	}
 
 
          //Sets the Fields with the class 'gf_readonly' as read only
         add_filter( 'gform_pre_render_9', 'set_field_readonly' );
-    function set_field_readonly( $form ) 
-     {
+    	
+	function set_field_readonly( $form ) 
+     	{
     		?>
-				<script type="text/javascript">
-				jQuery(document).ready(function()
-				{
-					jQuery("li.gf_readonly input").attr("readonly","readonly");
-				});
-				</script>
-			<?php
-			
-			return $form;//Returns the Form Details to render
-      }
+			<script type="text/javascript">
+			jQuery(document).ready(function()
+			{
+				jQuery("li.gf_readonly input").attr("readonly","readonly");
+			});
+			</script>
+		<?php
+		return $form;//Returns the Form Details to render
+      	}
      	
 
      //Gets the Entry ID information
@@ -50,12 +49,12 @@ add_action('init', 'get_entry_details');
      
      {
           //checks if the entry_id is set.   
-         if(isset($_GET['entry_id'])){
+         if(isset($_GET['entry_id']))
+	 {
                   $id = $_GET['entry_id'];
                   $entry = GFAPI::get_entry( $id);
           }   
            
-         
           return $entry;//returns the Entry from the Entry ID
      }
      
@@ -75,11 +74,11 @@ add_action('init', 'get_entry_details');
      //Updates the client name parameter from the Previous entry
      add_filter( 'gform_field_value_client_name', 'set_name_field_value', 10, 4 );
          
-		function set_name_field_value($entry)
+	function set_name_field_value($entry)
         {
             $entries = get_entry_details($entry);
             return $entries[2];//Returns the Client Name Information from the Entry
-		}
+	}
 		
 
 
@@ -88,9 +87,9 @@ add_action('init', 'get_entry_details');
          
         function set_service_field_value($entry)
         {
-		    $entries = get_entry_details($entry);
+	    $entries = get_entry_details($entry);
             return $entries;
-		}
+	}
     
      
  
